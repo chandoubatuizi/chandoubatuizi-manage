@@ -5,11 +5,11 @@ package cn.chandoubatuizi.manage.common.exception;
  */
 public class ServiceException extends Exception {
 
-    private String errorCode;
+    private int errorCode;
 
     private String errorMessage;
 
-    public ServiceException(String errorCode, String errorMessage) {
+    public ServiceException(int errorCode, String errorMessage) {
         super(errorMessage);
         this.errorCode = errorCode;
         this.errorMessage = errorMessage;
@@ -24,11 +24,11 @@ public class ServiceException extends Exception {
         super();
     }
 
-    public String getErrorCode() {
+    public int getErrorCode() {
         return errorCode;
     }
 
-    public void setErrorCode(String errorCode) {
+    public void setErrorCode(int errorCode) {
         this.errorCode = errorCode;
     }
 

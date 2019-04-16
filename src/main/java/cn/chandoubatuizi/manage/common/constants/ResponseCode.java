@@ -4,7 +4,10 @@ public enum ResponseCode {
 
     SUCCESS(0, "success"),
 
-    SERVICE_INNTER_ERROR(10001, "内部业务错误");
+    ILLEGAL_ARGUMENT(10001, "非法参数"),
+
+    INTERNAL_ERROR(10002, "内部错误");
+
 
     private int code;
 

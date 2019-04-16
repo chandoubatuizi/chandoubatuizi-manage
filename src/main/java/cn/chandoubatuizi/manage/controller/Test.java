@@ -1,6 +1,7 @@
 package cn.chandoubatuizi.manage.controller;
 
 
+import cn.chandoubatuizi.manage.common.exception.ServiceException;
 import cn.chandoubatuizi.manage.common.responseWrap.JsonResponse;
 import cn.chandoubatuizi.manage.dao.CountryPriceDOMapper;
 import cn.chandoubatuizi.manage.model.CountryPriceDO;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("test")
 public class Test {
 
-    private final Logger logger= LoggerFactory.getLogger(Test.class);
+    private final Logger logger = LoggerFactory.getLogger(Test.class);
 
     @Autowired
     private CountryPriceDOMapper countryPriceDOMapper;
@@ -29,7 +30,7 @@ public class Test {
 
     @RequestMapping("test2")
     @ResponseBody
-    public void test(){
+    public void test() {
         logger.debug("================debug=============");
         logger.info("================info=============");
         logger.warn("================warn=============");
@@ -38,8 +39,18 @@ public class Test {
 
     @RequestMapping("test3")
     @JsonResponse
-    public CountryPriceDO select2() {
+    public CountryPriceDO select2() throws ServiceException {
         CountryPriceDO countryPriceDO = countryPriceDOMapper.selectByPrimaryKey(1);
+        if (countryPriceDO != null) {
+            throw new ServiceException(1, "test");
+        }
         return countryPriceDO;
+    }
+
+    @RequestMapping("test4")
+    @JsonResponse
+    public void test4() {
+        int i = 1 / 0;
+
     }
 }

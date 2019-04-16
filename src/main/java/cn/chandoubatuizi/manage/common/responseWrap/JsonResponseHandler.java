@@ -36,7 +36,7 @@ public class JsonResponseHandler implements HandlerMethodReturnValueHandler {
     public void handleReturnValue(Object returnValue, MethodParameter returnType, ModelAndViewContainer mavContainer, NativeWebRequest webRequest) throws Exception {
         //如果是@JsonResponse则对返回数据做二次包装
         if (hasJsonResponseAnnotation(returnType)) {
-            JsonResponseWrap jsonResponseWrap = JsonResponseWrap.ofSuccess(returnType);
+            JsonResponseWrap jsonResponseWrap = JsonResponseWrap.ofSuccess(returnValue);
             proxiedHandler.handleReturnValue(jsonResponseWrap, returnType, mavContainer, webRequest);
         } else if (proxiedHandler.supportsReturnType(returnType)) {
             proxiedHandler.handleReturnValue(returnValue, returnType, mavContainer, webRequest);
