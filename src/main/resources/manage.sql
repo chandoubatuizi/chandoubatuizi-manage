@@ -21,7 +21,7 @@ CREATE TABLE `t_user` (
   `avatar` varchar(128) NOT NULL DEFAULT '' COMMENT '头像URL',
   `password` varchar(128) NOT NULL COMMENT '密码',
   `salt` varchar(50) NOT NULL COMMENT '盐值',
-  `last_login_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '最后登录时间',
+  `last_login_time` datetime NOT NULL DEFAULT '1000-01-01 00:00:00' COMMENT '最后登录时间',
   `last_login_ip` varchar(50) NOT NULL DEFAULT '' COMMENT '最后登录IP',
   `description` varchar(128) NOT NULL DEFAULT '' COMMENT '描述',
   `status` smallint(6) DEFAULT '1' COMMENT '状态 0锁定 1正常',
@@ -71,3 +71,17 @@ CREATE TABLE `t_role_menu` (
   `role_id` int(11) NOT NULL COMMENT '角色ID',
   `menu_id` int(11) NOT NULL COMMENT '菜单ID'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='角色-菜单权限关联表';
+
+DROP TABLE IF EXISTS `t_log`;
+CREATE TABLE `t_log` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `operation` varchar(50) NOT NULL DEFAULT '' COMMENT '操作内容',
+  `login_name` varchar(30) NOT NULL DEFAULT '' COMMENT '操作用户（登录名）',
+  `method` varchar(1024) NOT NULL DEFAULT '' COMMENT '方法名称',
+  `params` varchar(2048) NOT NULL DEFAULT '' COMMENT '方法参数',
+  `ip` varchar(50) NOT NULL DEFAULT '' COMMENT '操作者IP',
+  `location` varchar(128) DEFAULT '' COMMENT '操作者地点',
+  `time` int(11) NOT NULL DEFAULT '-1' COMMENT '耗时 ms',
+  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='操作日志表';
