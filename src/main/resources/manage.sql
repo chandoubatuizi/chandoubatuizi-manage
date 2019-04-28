@@ -77,6 +77,7 @@ CREATE TABLE `t_log` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
   `operation` varchar(50) NOT NULL DEFAULT '' COMMENT '操作内容',
   `login_name` varchar(30) NOT NULL DEFAULT '' COMMENT '操作用户（登录名）',
+  `url` varchar(1024) NOT NULL DEFAULT '' COMMENT '请求URL',
   `method` varchar(1024) NOT NULL DEFAULT '' COMMENT '方法名称',
   `params` varchar(2048) NOT NULL DEFAULT '' COMMENT '方法参数',
   `ip` varchar(50) NOT NULL DEFAULT '' COMMENT '操作者IP',

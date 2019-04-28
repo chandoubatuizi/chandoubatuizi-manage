@@ -1,13 +1,14 @@
 package cn.chandoubatuizi.manage.common.exception;
 
-import cn.chandoubatuizi.manage.common.constants.ResponseCode;
-import cn.chandoubatuizi.manage.common.responseWrap.JsonResponseWrap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import cn.chandoubatuizi.manage.common.constants.ResponseCode;
+import cn.chandoubatuizi.manage.common.responseWrap.JsonResponseWrap;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
@@ -21,13 +22,13 @@ public class GlobalExceptionHandler {
         return JsonResponseWrap.ofErrorCodeMessage(e.getErrorCode(), e.getErrorMessage());
     }
 
-    @ExceptionHandler(value = {MissingServletRequestParameterException.class})
+    @ExceptionHandler(value = { MissingServletRequestParameterException.class })
     @ResponseBody
     public JsonResponseWrap errorHandler(MissingServletRequestParameterException e) {
         return JsonResponseWrap.ofErrorCodeMessage(ResponseCode.ILLEGAL_ARGUMENT.getCode(), e.getMessage());
     }
 
-    @ExceptionHandler(value = {Throwable.class})
+    @ExceptionHandler(value = { Throwable.class })
     @ResponseBody
     public JsonResponseWrap errorHandler(Throwable e) {
         logger.error("Exception caught: ", e);

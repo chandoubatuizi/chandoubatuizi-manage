@@ -6,6 +6,5 @@ public interface RoleMenuDOMapper {
 
     int insert(RoleMenuDO record);
 
-
     int insertSelective(RoleMenuDO record);
 }

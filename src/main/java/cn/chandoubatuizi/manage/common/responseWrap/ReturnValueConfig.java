@@ -1,21 +1,21 @@
 package cn.chandoubatuizi.manage.common.responseWrap;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.Resource;
+
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.method.support.HandlerMethodReturnValueHandler;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter;
 import org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor;
 
-import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.List;
-
 @Configuration
 class ReturnValueConfig implements InitializingBean {
 
     @Resource(name = "requestMappingHandlerAdapter")
     private RequestMappingHandlerAdapter handlerAdapter;
-
 
     @Override
     public void afterPropertiesSet() throws Exception {

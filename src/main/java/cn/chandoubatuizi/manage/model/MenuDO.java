@@ -54,103 +54,90 @@ public class MenuDO {
      */
     private Date updateTime;
 
-
     public Integer getId() {
         return id;
     }
-
 
     public void setId(Integer id) {
         this.id = id;
     }
 
-
     public String getMenuName() {
         return menuName;
     }
-
 
     public void setMenuName(String menuName) {
         this.menuName = menuName;
     }
 
-
     public Integer getParentId() {
         return parentId;
     }
-
 
     public void setParentId(Integer parentId) {
         this.parentId = parentId;
     }
 
-
     public String getUrl() {
         return url;
     }
-
 
     public void setUrl(String url) {
         this.url = url;
     }
 
-
     public Integer getType() {
         return type;
     }
-
 
     public void setType(Integer type) {
         this.type = type;
     }
 
-
     public String getIcon() {
         return icon;
     }
-
 
     public void setIcon(String icon) {
         this.icon = icon;
     }
 
-
     public Integer getOrderNum() {
         return orderNum;
     }
-
 
     public void setOrderNum(Integer orderNum) {
         this.orderNum = orderNum;
     }
 
-
     public String getPerms() {
         return perms;
     }
-
 
     public void setPerms(String perms) {
         this.perms = perms;
     }
 
-
     public Date getCreateTime() {
         return createTime;
     }
-
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
 
-
     public Date getUpdateTime() {
         return updateTime;
     }
 
-
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+    @Override
+    public String toString() {
+        return "MenuDO{" + "id=" + id + ", menuName='" + menuName + '\'' + ", parentId=" + parentId + ", url='" + url
+                + '\'' + ", type=" + type + ", icon='" + icon + '\'' + ", orderNum=" + orderNum + ", perms='" + perms
+                + '\'' + ", createTime=" + createTime + ", updateTime=" + updateTime + '}';
     }
 }

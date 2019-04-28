@@ -1,5 +1,6 @@
 package cn.chandoubatuizi.manage.core.service.impl;
 
+import cn.chandoubatuizi.manage.common.exception.ServiceException;
 import cn.chandoubatuizi.manage.core.service.UserService;
 import cn.chandoubatuizi.manage.dao.UserDOMapper;
 import cn.chandoubatuizi.manage.model.UserDO;
@@ -15,12 +16,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public int create() {
+    public int create() throws ServiceException {
         UserDO userDO = new UserDO();
         userDO.setPassword("1111");
         userDO.setSalt("112121");
         int affectedRows = userDOMapper.insertSelective(userDO);
-        int a = 1 / 0;
+        if("1".equals("1")){
+            throw new ServiceException("test");
+        }
         return affectedRows;
     }
 

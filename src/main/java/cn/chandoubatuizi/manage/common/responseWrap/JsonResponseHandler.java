@@ -23,8 +23,8 @@ public class JsonResponseHandler implements HandlerMethodReturnValueHandler {
     }
 
     private boolean hasJsonResponseAnnotation(MethodParameter returnType) {
-        return (AnnotationUtils.findAnnotation(returnType.getContainingClass(), JsonResponse.class) != null ||
-                returnType.getMethodAnnotation(JsonResponse.class) != null);
+        return (AnnotationUtils.findAnnotation(returnType.getContainingClass(), JsonResponse.class) != null
+                || returnType.getMethodAnnotation(JsonResponse.class) != null);
     }
 
     @Override
@@ -33,8 +33,9 @@ public class JsonResponseHandler implements HandlerMethodReturnValueHandler {
     }
 
     @Override
-    public void handleReturnValue(Object returnValue, MethodParameter returnType, ModelAndViewContainer mavContainer, NativeWebRequest webRequest) throws Exception {
-        //如果是@JsonResponse则对返回数据做二次包装
+    public void handleReturnValue(Object returnValue, MethodParameter returnType, ModelAndViewContainer mavContainer,
+            NativeWebRequest webRequest) throws Exception {
+        // 如果是@JsonResponse则对返回数据做二次包装
         if (hasJsonResponseAnnotation(returnType)) {
             JsonResponseWrap jsonResponseWrap = JsonResponseWrap.ofSuccess(returnValue);
             proxiedHandler.handleReturnValue(jsonResponseWrap, returnType, mavContainer, webRequest);

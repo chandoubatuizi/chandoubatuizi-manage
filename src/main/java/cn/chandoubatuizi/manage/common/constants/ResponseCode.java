@@ -8,7 +8,6 @@ public enum ResponseCode {
 
     INTERNAL_ERROR(10002, "内部错误");
 
-
     private int code;
 
     private String message;

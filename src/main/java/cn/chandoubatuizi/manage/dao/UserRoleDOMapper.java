@@ -6,6 +6,5 @@ public interface UserRoleDOMapper {
 
     int insert(UserRoleDO record);
 
-
     int insertSelective(UserRoleDO record);
 }
