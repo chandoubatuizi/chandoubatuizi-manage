@@ -9,6 +9,9 @@
                            http://www.springframework.org/schema/task
                            http://www.springframework.org/schema/task/spring-task-4.0.xsd">
 
+    <context:property-placeholder location="classpath:/config/*.properties"/>
+
+
     <context:component-scan base-package="cn.chandoubatuizi.manage.core"/>
 
     <task:executor id="logExecutor"
@@ -18,6 +21,6 @@
     <task:annotation-driven executor="logExecutor"/>
 
     <import resource="spring-mybatis.xml"/>
-
+    <import resource="spring-shiro.xml"/>
 
 </beans>

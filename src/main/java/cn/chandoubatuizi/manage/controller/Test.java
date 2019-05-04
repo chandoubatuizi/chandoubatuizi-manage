@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.chandoubatuizi.manage.common.annotation.Log;
 import cn.chandoubatuizi.manage.common.exception.ServiceException;
-import cn.chandoubatuizi.manage.core.service.UserService;
+import cn.chandoubatuizi.manage.core.service.TestService;
 import cn.chandoubatuizi.manage.model.UserDO;
 
 @Controller
@@ -15,7 +15,7 @@ import cn.chandoubatuizi.manage.model.UserDO;
 public class Test {
 
     @Autowired
-    private UserService userService;
+    private TestService userService;
 
     @ResponseBody
     @RequestMapping("/test1")

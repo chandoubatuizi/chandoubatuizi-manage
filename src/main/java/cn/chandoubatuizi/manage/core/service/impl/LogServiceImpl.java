@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import cn.chandoubatuizi.manage.common.annotation.Log;
+import cn.chandoubatuizi.manage.common.util.IpAddressUtil;
 import cn.chandoubatuizi.manage.core.service.LogService;
 import cn.chandoubatuizi.manage.dao.LogDOMapper;
 import cn.chandoubatuizi.manage.model.LogDO;
@@ -25,7 +26,6 @@ public class LogServiceImpl implements LogService {
     @Async("logExecutor")
     public void createLog(ProceedingJoinPoint joinPoint, LogDO logDO) {
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
-        String test = signature.getName();
         Method method = signature.getMethod();
         Log logAnnotation = method.getAnnotation(Log.class);
 
@@ -38,6 +38,7 @@ public class LogServiceImpl implements LogService {
         String className = joinPoint.getTarget().getClass().getName();
         String methodName = method.getName();
         logDO.setMethod(className + "." + methodName + "()");
+        logDO.setLocation(IpAddressUtil.getAddressByIP(logDO.getIp()));
 
         logDOMapper.insertSelective(logDO);
     }

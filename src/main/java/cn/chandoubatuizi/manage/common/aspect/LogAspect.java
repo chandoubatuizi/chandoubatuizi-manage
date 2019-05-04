@@ -49,7 +49,7 @@ public class LogAspect {
 
         LogDO logDO = new LogDO();
         // logDO.setLoginName(userDO.getLoginName());
-        // logDO.setIp(ip);
+         logDO.setIp("111.201.185.251");
         logDO.setUrl(requestURI);
         logDO.setTime((int) time);
         logDO.setParams(params);

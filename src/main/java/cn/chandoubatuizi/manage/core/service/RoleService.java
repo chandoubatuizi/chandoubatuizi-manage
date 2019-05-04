@@ -1,6 +1,4 @@
 package cn.chandoubatuizi.manage.core.service;
 
-public interface UserService {
-
-
+public interface RoleService {
 }

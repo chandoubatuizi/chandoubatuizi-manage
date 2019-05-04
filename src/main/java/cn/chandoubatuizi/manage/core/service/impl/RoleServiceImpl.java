@@ -1,8 +1,8 @@
 package cn.chandoubatuizi.manage.core.service.impl;
 
-import cn.chandoubatuizi.manage.core.service.UserService;
+import cn.chandoubatuizi.manage.core.service.RoleService;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class RoleServiceImpl implements RoleService {
 }
