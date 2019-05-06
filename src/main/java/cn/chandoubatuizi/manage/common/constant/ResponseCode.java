@@ -1,4 +1,4 @@
-package cn.chandoubatuizi.manage.common.constants;
+package cn.chandoubatuizi.manage.common.constant;
 
 public enum ResponseCode {
 

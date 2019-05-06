@@ -98,4 +98,12 @@
         update_time = #{updateTime,jdbcType=TIMESTAMP}
         where id = #{id,jdbcType=INTEGER}
     </update>
+
+    <select id="getRoleDOListByLoginName" resultMap="BaseResultMap">
+        select r.*
+        from t_role r
+        left join t_user_role ur on (ur.role_id = r.id)
+        left join t_user u on (u.id = ur.user_id)
+        where u.login_name = #{loginName,jdbcType=VARCHAR}
+    </select>
 </mapper>

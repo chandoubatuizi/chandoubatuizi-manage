@@ -1,5 +1,7 @@
 package cn.chandoubatuizi.manage.dao;
 
+import java.util.List;
+
 import cn.chandoubatuizi.manage.model.MenuDO;
 
 public interface MenuDOMapper {
@@ -15,4 +17,6 @@ public interface MenuDOMapper {
     int updateByPrimaryKeySelective(MenuDO record);
 
     int updateByPrimaryKey(MenuDO record);
+
+    List<MenuDO> getMenuDOListByLoginName(String loginName);
 }

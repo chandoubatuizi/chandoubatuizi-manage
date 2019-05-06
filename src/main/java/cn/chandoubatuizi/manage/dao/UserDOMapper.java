@@ -8,11 +8,9 @@ public interface UserDOMapper {
 
     int insert(UserDO record);
 
-    int insertSelective(UserDO record);
-
     UserDO selectByPrimaryKey(Integer id);
 
     int updateByPrimaryKeySelective(UserDO record);
 
-    int updateByPrimaryKey(UserDO record);
+    UserDO getUserByLoginName(String loginName);
 }

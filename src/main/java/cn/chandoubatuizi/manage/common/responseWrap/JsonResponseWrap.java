@@ -1,6 +1,6 @@
 package cn.chandoubatuizi.manage.common.responseWrap;
 
-import cn.chandoubatuizi.manage.common.constants.ResponseCode;
+import cn.chandoubatuizi.manage.common.constant.ResponseCode;
 
 public class JsonResponseWrap<T> {
 

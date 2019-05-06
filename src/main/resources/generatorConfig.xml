@@ -45,7 +45,7 @@
         </javaClientGenerator>
 
         <!-- !!!! Table Configurations !!!! -->
-        <table tableName="t_role" domainObjectName="RoleDO" enableCountByExample="false"
+        <table tableName="t_log" domainObjectName="LogDO" enableCountByExample="false"
                enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false"/>

@@ -2,6 +2,8 @@ package cn.chandoubatuizi.manage.dao;
 
 import cn.chandoubatuizi.manage.model.RoleDO;
 
+import java.util.List;
+
 public interface RoleDOMapper {
 
     int deleteByPrimaryKey(Integer id);
@@ -15,4 +17,6 @@ public interface RoleDOMapper {
     int updateByPrimaryKeySelective(RoleDO record);
 
     int updateByPrimaryKey(RoleDO record);
+
+    List<RoleDO> getRoleDOListByLoginName(String loginName);
 }

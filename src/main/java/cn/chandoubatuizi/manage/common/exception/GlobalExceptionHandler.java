@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import cn.chandoubatuizi.manage.common.constants.ResponseCode;
+import cn.chandoubatuizi.manage.common.constant.ResponseCode;
 import cn.chandoubatuizi.manage.common.responseWrap.JsonResponseWrap;
 
 @ControllerAdvice
