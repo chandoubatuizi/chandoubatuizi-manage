@@ -43,17 +43,28 @@
         <property name="prefix" value="/html/"/>
         <property name="suffix" value=".html"/>
         <property name="templateMode" value="HTML5"/>
+        <property name="characterEncoding" value="UTF-8"/>
     </bean>
 
     <!--thymeleaf模板引擎-->
     <bean id="templateEngine" class="org.thymeleaf.spring4.SpringTemplateEngine">
         <property name="templateResolver" ref="templateResolver"/>
+        <!--shiro-thymeleaf整合-->
+        <property name="additionalDialects">
+            <set>
+                <bean class="at.pollux.thymeleaf.shiro.dialect.ShiroDialect"/>
+            </set>
+        </property>
     </bean>
 
     <!--thymeleaf视图解析-->
     <bean class="org.thymeleaf.spring4.view.ThymeleafViewResolver">
         <property name="templateEngine" ref="templateEngine"/>
+        <property name="characterEncoding" value="UTF-8"/>
     </bean>
+
+    <!--静态资源处理-->
+    <mvc:resources mapping="/static/**" location="/static/"/>
 
     <!-- 自动扫包 -->
     <context:component-scan base-package="cn.chandoubatuizi.manage.controller"/>

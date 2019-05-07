@@ -83,7 +83,7 @@
         <!--用于存放session ID的cookie模板-->
         <property name="sessionIdCookie" ref="sessionIdCookie"/>
         <!--URL后是否有JESSIONID-->
-        <property name="sessionIdUrlRewritingEnabled" value="true"/>
+        <property name="sessionIdUrlRewritingEnabled" value="false"/>
         <!--session持久化 采用redis实现-->
         <property name="sessionDAO" ref="redisSessionDAO"/>
 
@@ -116,19 +116,19 @@
         而anon，authcBasic，auchc，user是AuthenticationFilter，所以unauthorizedUrl设置后页面不跳转-->
         <property name="unauthorizedUrl" value=""/>
         <!--自定义过滤器-->
-        <property name="filters">
-            <util:map>
-                <!--TODO-->
-            </util:map>
-        </property>
+        <!--<property name="filters">-->
+            <!--<util:map>-->
+                <!--&lt;!&ndash;TODO&ndash;&gt;-->
+            <!--</util:map>-->
+        <!--</property>-->
         <!--过滤链 包含shiro自带的一些filter-->
         <property name="filterChainDefinitions">
             <value>
-                /login = anno
-                /html/** = anno
-                /js/** = anno
-                /css/** = anno
-                /static/** = anno
+                /login = anon
+                /html/** = anon
+                /js/** = anon
+                /css/** = anon
+                /static/** = anon
                 /logout = logout
                 /** = user
             </value>
