@@ -6,7 +6,11 @@ public enum ResponseCode {
 
     ILLEGAL_ARGUMENT(10001, "非法参数"),
 
-    INTERNAL_ERROR(10002, "内部错误");
+    INTERNAL_ERROR(10002, "内部错误"),
+
+    LOGIN_ERROR(10003, "登录错误"),
+
+    NO_PERMISSION(10004, "暂无权限，请联系系统管理员");
 
     private int code;
 

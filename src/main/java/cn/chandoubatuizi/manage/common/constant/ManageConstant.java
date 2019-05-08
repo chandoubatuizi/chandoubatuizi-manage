@@ -16,4 +16,9 @@ public class ManageConstant {
          */
         int USER_NORMAL = 1;
     }
+
+    /**
+     * 登录最大尝试次数
+     */
+    public static final int MAX_RETRY_COUNT = 5;
 }

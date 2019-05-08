@@ -52,4 +52,15 @@ public class HttpContextUtil {
     public static Map<String, String[]> getParameterMap() {
         return getHttpServletRequest().getParameterMap();
     }
+
+    /**
+     * 判断是否为ajax请求
+     * 
+     * @param request
+     * @return
+     */
+    public static boolean isAjaxRequest(HttpServletRequest request) {
+        return request.getHeader("x-requested-with") != null
+                && request.getHeader("x-requested-with").equalsIgnoreCase("XMLHttpRequest");
+    }
 }

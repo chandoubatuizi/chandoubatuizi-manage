@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>颤抖吧腿子の管理系统</title>
+    <link rel="shortcut icon" type="image/png" th:href="@{static/image/favicon.ico}"/>
+    <link rel="stylesheet" th:href="@{static/plugin/bootstrap/css/bootstrap.min.css}"/>
+
+    <script th:src="@{static/plugin/jquery.min.js}"></script>
+
+</head>
+<body>
+<div class="form-panel one">
+    <div class="form-header">
+        <h1>账户登录</h1>
+    </div>
+    <div class="form-content">
+        <div class="form-group">
+            <label>用户名</label>
+            <input type="text" name="username"/>
+        </div>
+        <div class="form-group">
+            <label>密码</label>
+            <input type="password" name="password"/>
+        </div>
+        <div class="form-group" style="margin: 0px;">
+            <p>
+                <input type="checkbox" name="rememberme"/>&nbsp;&nbsp;记住我</p>
+        </div>
+        <div class="form-group">
+            <button onclick="login()" id="loginButton">登录</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function login() {
+        var username = $(".one input[name='username']").val().trim();
+        var password = $(".one input[name='password']").val().trim();
+        var rememberMe = $(".one input[name='rememberme']").is(':checked');
+        $.ajax({
+            type: "post",
+            url: "/login",
+            data: {
+                "loginName": username,
+                "password": password,
+                "rememberMe": rememberMe
+            },
+            dataType: "json",
+            success: function (r) {
+                if (r.code === 0) {
+                    location.href = '/index';
+                } else {
+                    alert("登录失败");
+                }
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
