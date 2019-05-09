@@ -71,13 +71,11 @@ public class UserRealm extends AuthorizingRealm {
         if (user == null) {
             throw new UnknownAccountException("账号或密码错误");
         }
-        if (!password.equals(user.getPassword())) {
-            throw new IncorrectCredentialsException("账号或密码错误");
-        }
         if (ManageConstant.UserAccount.USER_LOCK == user.getStatus()) {
             throw new LockedAccountException("该账号被锁定，请联系系统管理员处理");
         }
-
+        userService.validateUser(user, password);
+        userService.updateLoginInfo(userName);
         return new SimpleAuthenticationInfo(user, password, getName());
     }
 }

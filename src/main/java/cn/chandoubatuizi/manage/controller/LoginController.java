@@ -1,5 +1,6 @@
 package cn.chandoubatuizi.manage.controller;
 
+import cn.chandoubatuizi.manage.common.annotation.Log;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
@@ -30,14 +31,25 @@ public class LoginController {
         subject.login(usernamePasswordToken);
     }
 
-    @RequestMapping("/test")
-    @ResponseBody
-    public String test() {
-        return "121212121212";
-    }
-
     @RequestMapping("/")
     public String redirect2Home() {
+        return "redirect:/index";
+    }
+
+    @RequestMapping("/index")
+    public String index() {
         return "index";
+    }
+
+    @RequestMapping("/403")
+    public String unAuth() {
+        return "error/403";
+    }
+
+    @Log("日志测试")
+    @RequestMapping("/auth/test")
+    @ResponseBody
+    public String test() {
+        return "=========test==========";
     }
 }

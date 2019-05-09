@@ -1,9 +1,11 @@
 package cn.chandoubatuizi.manage.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class UserDO {
+public class UserDO implements Serializable {
 
+    private static final long serialVersionUID = 8691797717806764333L;
     /**
      * 主键
      */

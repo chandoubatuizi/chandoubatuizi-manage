@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:util="http://www.springframework.org/schema/util"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-                           http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
-                           http://www.springframework.org/schema/util
-                           http://www.springframework.org/schema/beans/spring-util-4.0.xsd">
+                           http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
 
 
     <!--自定义Realm 实现了登录与授权-->
@@ -110,16 +107,16 @@
         <!--没有登录的用户请求需要登录的页面时自动跳转到登录页面的地址-->
         <property name="loginUrl" value="/login"/>
         <!--认证成功统一跳转url，不配置shiro认证成功自动跳转到上一个请求路径，若session中不存在则跳转到/ 建议不配置-->
-        <property name="successUrl" value=""/>
+        <!--<property name="successUrl" value=""/>-->
         <!--无权限的时候跳转的url-->
         <!--这里有个坑：filter是AuthorizationFilter，然后，只有perms，roles，ssl，rest，port才是属于AuthorizationFilter，
         而anon，authcBasic，auchc，user是AuthenticationFilter，所以unauthorizedUrl设置后页面不跳转-->
-        <property name="unauthorizedUrl" value=""/>
+        <property name="unauthorizedUrl" value="/403"/>
         <!--自定义过滤器-->
         <!--<property name="filters">-->
-            <!--<util:map>-->
-                <!--&lt;!&ndash;TODO&ndash;&gt;-->
-            <!--</util:map>-->
+        <!--<util:map>-->
+        <!--&lt;!&ndash;TODO&ndash;&gt;-->
+        <!--</util:map>-->
         <!--</property>-->
         <!--过滤链 包含shiro自带的一些filter-->
         <property name="filterChainDefinitions">
@@ -130,9 +127,16 @@
                 /css/** = anon
                 /static/** = anon
                 /logout = logout
+                /auth/** = user,roles[admin]
                 /** = user
             </value>
         </property>
+    </bean>
+
+    <!--用于记录用户登录错误次数的缓存管理-->
+    <bean id="loginTimeLimitCacheManager" class="org.crazycake.shiro.RedisCacheManager">
+        <property name="redisManager" ref="redisManager"/>
+        <property name="expire" value="600"/>
     </bean>
 
 </beans>

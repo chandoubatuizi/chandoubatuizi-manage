@@ -47,11 +47,11 @@
                 "rememberMe": rememberMe
             },
             dataType: "json",
-            success: function (r) {
-                if (r.code === 0) {
+            success: function (result) {
+                if (result.code === 0) {
                     location.href = '/index';
                 } else {
-                    alert("登录失败");
+                    alert(result.message);
                 }
             }
         });

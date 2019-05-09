@@ -20,4 +20,11 @@ public interface UserService {
      */
     void validateUser(UserDO user, String password);
 
+    /**
+     * 更新用户登录信息
+     * 
+     * @param loginName
+     */
+    void updateLoginInfo(String loginName);
+
 }

@@ -3,6 +3,7 @@ package cn.chandoubatuizi.manage.core.service.impl;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 
 import org.apache.shiro.authc.ExcessiveAttemptsException;
 import org.apache.shiro.authc.IncorrectCredentialsException;
@@ -23,7 +24,7 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserDOMapper userDOMapper;
 
-    @Autowired
+    @Resource(name = "loginTimeLimitCacheManager")
     private CacheManager cacheManager;
 
     /**
@@ -63,5 +64,10 @@ public class UserServiceImpl implements UserService {
             loginTimesLimitCache.remove(loginName);
         }
 
+    }
+
+    @Override
+    public void updateLoginInfo(String loginName) {
+        userDOMapper.updateLoginInfo(loginName, ShiroUtil.getIp());
     }
 }

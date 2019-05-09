@@ -2,6 +2,7 @@ package cn.chandoubatuizi.manage.common.aspect;
 
 import java.util.Map;
 
+import org.apache.shiro.SecurityUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -12,8 +13,10 @@ import org.springframework.stereotype.Component;
 import com.alibaba.fastjson.JSON;
 
 import cn.chandoubatuizi.manage.common.util.HttpContextUtil;
+import cn.chandoubatuizi.manage.common.util.ShiroUtil;
 import cn.chandoubatuizi.manage.core.service.LogService;
 import cn.chandoubatuizi.manage.model.LogDO;
+import cn.chandoubatuizi.manage.model.UserDO;
 
 @Component
 @Aspect
@@ -35,12 +38,10 @@ public class LogAspect {
         result = joinPoint.proceed();
         // 执行时长(毫秒)
         long time = System.currentTimeMillis() - beginTime;
-        System.out.println("================aroundTest============" + time + "======");
 
         // 根据subject取出用户名和IP
-        // Subject subject = SecurityUtils.getSubject();
-        // String ip = subject.getSession().getHost();
-        // UserDO userDO = (UserDO) subject.getPrincipal();
+        String ip = ShiroUtil.getIp();
+        UserDO userDO = (UserDO) SecurityUtils.getSubject().getPrincipal();
         String requestURI = HttpContextUtil.getRequestURI();
         Map<String, String[]> parameterMap = HttpContextUtil.getParameterMap();
 
@@ -48,8 +49,8 @@ public class LogAspect {
         System.out.println(params);
 
         LogDO logDO = new LogDO();
-        // logDO.setLoginName(userDO.getLoginName());
-         logDO.setIp("111.201.185.251");
+        logDO.setLoginName(userDO.getLoginName());
+        logDO.setIp(ip);
         logDO.setUrl(requestURI);
         logDO.setTime((int) time);
         logDO.setParams(params);
