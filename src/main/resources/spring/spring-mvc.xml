@@ -78,4 +78,38 @@
     </bean>
 
     <aop:aspectj-autoproxy/>
+
+    <!--验证码-->
+    <bean id="captchaProducer" class="com.google.code.kaptcha.impl.DefaultKaptcha">
+        <property name="config">
+            <bean class="com.google.code.kaptcha.util.Config">
+                <constructor-arg>
+                    <props>
+                        <!-- 是否有边框 -->
+                        <prop key="kaptcha.border">yes</prop>
+                        <!-- 边框颜色 -->
+                        <prop key="kaptcha.border.color">255,160,122</prop>
+                        <!-- 验证码文本字符颜色 -->
+                        <prop key="kaptcha.textproducer.font.color">30,144,255</prop>
+                        <!-- 验证码文本字符大小 -->
+                        <prop key="kaptcha.textproducer.font.size">40</prop>
+                        <!-- 验证码图片的宽度 默认200 -->
+                        <prop key="kaptcha.image.width">125</prop>
+                        <!-- 验证码图片的高度 默认50 -->
+                        <prop key="kaptcha.image.height">45</prop>
+                        <!-- 验证码文本字符长度  默认为5 -->
+                        <prop key="kaptcha.textproducer.char.length">4</prop>
+                        <!-- 验证码文本字符间距 默认为2 -->
+                        <prop key="kaptcha.textproducer.char.space">3</prop>
+                        <!-- 验证码文本字体样式  默认为new Font("Arial", 1, fontSize), new Font("Courier", 1, fontSize)  -->
+                        <prop key="kaptcha.textproducer.font.names">Arial,Courier</prop>
+                        <!-- 验证码噪点颜色 默认为Color.BLACK -->
+                        <prop key="kaptcha.noise.color">white</prop>
+                        <!-- 图文样式 -->
+                        <prop key="kaptcha.obscurificator.impl">com.google.code.kaptcha.impl.ShadowGimpy</prop>
+                    </props>
+                </constructor-arg>
+            </bean>
+        </property>
+    </bean>
 </beans>

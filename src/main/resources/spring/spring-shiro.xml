@@ -122,6 +122,7 @@
         <property name="filterChainDefinitions">
             <value>
                 /login = anon
+                /getCaptcha = anon
                 /html/** = anon
                 /js/** = anon
                 /css/** = anon
